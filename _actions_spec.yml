@@ -1,0 +1,89 @@
+-
+  name:
+    "en_US": "Create Service Account"
+    "zh_CN": "创建业务账户"
+  description:
+    "en_US": "Create Service Account"
+    "zh_CN": "创建业务账户"
+  commands:
+    - "sh autoInitialization.sh user"
+
+-
+  name:
+    "en_US": "Mount Disk"
+    "zh_CN": "挂载磁盘"
+  description:
+    "en_US": "partition、format and mount disk"
+    "zh_CN": "分区格式化并挂载磁盘"
+  commands:
+    - "sh autoInitialization.sh disk"
+
+-
+  name:
+    "en_US": "Set HostName"
+    "zh_CN": "设置主机名"
+  description:
+    "en_US": "Set HostName to /etc/hosts file"
+    "zh_CN": "将主机名信息写入/etc/hosts文件"
+  commands:
+    - "sh autoInitialization.sh hostname"
+
+-
+  name:
+    "en_US": "Set DNS"
+    "zh_CN": "设置DNS"
+  description:
+    "en_US": "Set dns to /etc/resolv.conf file"
+    "zh_CN": "将DNS信息写入/etc/resolv.conf文件"
+  commands:
+    - "sh autoInitialization.sh dns"
+
+-
+  name:
+    "en_US": "Set NTP"
+    "zh_CN": "设置NTP"
+  description:
+    "en_US": "Set ntp to /etc/ntp.conf file"
+    "zh_CN": "将NTP信息写入/etc/ntp.conf文件"
+  commands:
+    - "sh autoInitialization.sh ntp"
+
+-
+  name:
+    "en_US": "Change Password"
+    "zh_CN": "更新密码"
+  description:
+    "en_US": "Change user's password on remote host"
+    "zh_CN": "更改远程主机用户密码"
+  commands:
+    - "sh change_passwd.sh"
+
+-
+  name:
+    "en_US": "Initialization VM"
+    "zh_CN": "初始化虚拟机"
+  description:
+    "en_US": "Create Sevice Account,Mount Disk,Set HOSTNAME,DNS,NTP "
+    "zh_CN": "创建业务账户，挂载磁盘，设置主机名，DNS,NTP"
+  commands:
+    - "sh autoInitialization.sh InitialVM"
+
+-
+  name:
+    "en_US": "Remove Service Account"
+    "zh_CN": "删除账户"
+  description:
+    "en_US": "Remove Service Account"
+    "zh_CN": "删除账户"
+  commands:
+    - "sh autoInitialization.sh removeAccount"
+    
+-
+  name:
+    "en_US": "Mount All Disk"
+    "zh_CN": "初始化所有节点磁盘分区"
+  description:
+    "en_US": "partition、format and mount disk"
+    "zh_CN": "分区格式化并挂载磁盘"
+  commands:
+    - "sh autoInitialization.sh initAllDisk"

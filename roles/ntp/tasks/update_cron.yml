@@ -1,0 +1,10 @@
+--- 
+- name: clear ntp cron job from /etc/crontab
+  shell: sed -i '/sbin\/hwclock\|usr\/sbin\/ntpdate/d' /etc/crontab
+  sudo: yes
+  
+- name: set cron job for ntp to /etc/crontab
+  shell: echo '*/10 * * * * root /sbin/hwclock -w' >> /etc/crontab
+  sudo: yes
+
+- include: ../../crontab/tasks/restart_cron.yml

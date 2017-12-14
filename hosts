@@ -1,0 +1,10 @@
+[base:children]
+taskcenter
+[base:vars]
+ansible_ssh_user=root
+ansible_ssh_group=root
+[taskcenter]
+#I-TCENTER01     ansible_ssh_host=10.55.21.134   user_name=apitask user_group=apitask disk_name=/dev/xvde mount_map="[/opt]=20G [/var/log]=80G"
+#I-TCENTER02     ansible_ssh_host=xx.xx.xx.xx   user_name=apitask user_group=apitask disk_name=/dev/xvde mount_map="[/opt]=20G [/var/log]=60G"
+I-TCENTER-DB01  ansible_ssh_host=10.55.21.190   user_name=apitask user_group=apitask disk_name=/dev/xvde mount_map="[/opt]=150G [/opt/backup]=130G [/var/log]=120G"
+I-TCENTER-DB02  ansible_ssh_host=10.55.21.191   user_name=apitask user_group=apitask disk_name=/dev/xvde mount_map="[/opt]=150G [/opt/backup]=130G [/var/log]=120G"

@@ -1,0 +1,7 @@
+--- 
+- name: create working dir
+  file: path={{target}} state=directory mode=0700 owner={{ansible_ssh_user}} group={{ansible_ssh_group}}
+  sudo: yes
+
+- name: print msg
+  debug: msg="create {{target}} successfully."

@@ -1,0 +1,5 @@
+---
+
+- name: removeAccount
+  user: name={{user_name}} state=absent remove=yes
+  sudo: yes

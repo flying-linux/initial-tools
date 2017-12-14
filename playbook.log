@@ -1,0 +1,269 @@
+
+PLAY [base] ******************************************************************* 
+
+TASK: [InitialVM | remove user] *********************************************** 
+
+TASK: [InitialVM | add usergroup] ********************************************* 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | add user] ************************************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | print msg] ************************************************* 
+ok: [I-TCENTER-DB01] => {
+    "msg": "add usergroup apitask and user apitask successfully"
+}
+ok: [I-TCENTER-DB02] => {
+    "msg": "add usergroup apitask and user apitask successfully"
+}
+
+TASK: [InitialVM | passwd user {{user_name}}] ********************************* 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | generate ssh_key for user] ********************************* 
+
+TASK: [InitialVM | print msg] ************************************************* 
+
+TASK: [InitialVM | Transfer service_switch script] **************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | Transfer partition script] ********************************* 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | execute script] ******************************************** 
+ok: [I-TCENTER-DB02]
+ok: [I-TCENTER-DB01]
+<job 216790623708.45870> polling, 3580s remaining
+<job 216790623708.44084> polling, 3580s remaining
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+<job 216790623708.45870> finished on I-TCENTER-DB02
+<job 216790623708.44084> finished on I-TCENTER-DB01
+
+TASK: [InitialVM | print result] ********************************************** 
+ok: [I-TCENTER-DB01] => {
+    "msg": "result:/tmp/partitions_and_mount.sh /dev/xvde yes 3 130G 120G DEFAULT  no /opt/backup /var/log /opt\n--------Backup the file----------------------------\n----------delete old partitions--------------------\n--------Begin to create partitions for disk--------\n\n\n---------------if need create swap----------------\n------Begin to mount disk to document folder------\n-------------------Show  Result-------------------\nFilesystem                    Size  Used Avail Use% Mounted on\n/dev/mapper/VolGroup-lv_root   38G  1.1G   37G   3% /\ndevtmpfs                      3.9G     0  3.9G   0% /dev\ntmpfs                         3.9G     0  3.9G   0% /dev/shm\ntmpfs                         3.9G  8.4M  3.9G   1% /run\ntmpfs                         3.9G     0  3.9G   0% /sys/fs/cgroup\n/dev/xvda1                    488M   44M  409M  10% /boot\ntmpfs                         795M     0  795M   0% /run/user/0\n/dev/xvde2                    119G  191M  112G   1% /var/log\n/dev/xvde3                    148G  188M  140G   1% /opt\n-----------------------End------------------------"
+}
+ok: [I-TCENTER-DB02] => {
+    "msg": "result:/tmp/partitions_and_mount.sh /dev/xvde yes 3 130G 120G DEFAULT  no /opt/backup /var/log /opt\n--------Backup the file----------------------------\n----------delete old partitions--------------------\n--------Begin to create partitions for disk--------\n\n\n---------------if need create swap----------------\n------Begin to mount disk to document folder------\n-------------------Show  Result-------------------\nFilesystem                    Size  Used Avail Use% Mounted on\n/dev/mapper/VolGroup-lv_root   38G  1.1G   37G   3% /\ndevtmpfs                      3.9G     0  3.9G   0% /dev\ntmpfs                         3.9G     0  3.9G   0% /dev/shm\ntmpfs                         3.9G  8.4M  3.9G   1% /run\ntmpfs                         3.9G     0  3.9G   0% /sys/fs/cgroup\n/dev/xvda1                    488M   44M  409M  10% /boot\ntmpfs                         795M     0  795M   0% /run/user/0\n/dev/xvde2                    119G  191M  112G   1% /var/log\n/dev/xvde3                    148G  188M  140G   1% /opt\n-----------------------End------------------------"
+}
+
+TASK: [InitialVM | clean env] ************************************************* 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | create working dir] **************************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | print msg] ************************************************* 
+ok: [I-TCENTER-DB02] => {
+    "msg": "create /tmp/root successfully."
+}
+ok: [I-TCENTER-DB01] => {
+    "msg": "create /tmp/root successfully."
+}
+
+TASK: [InitialVM | backup file] *********************************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | print msg] ************************************************* 
+ok: [I-TCENTER-DB01] => {
+    "msg": "backup /etc/hosts to /tmp/root/hosts_20171109061011 successfully."
+}
+ok: [I-TCENTER-DB02] => {
+    "msg": "backup /etc/hosts to /tmp/root/hosts_20171109061011 successfully."
+}
+
+TASK: [InitialVM | add host_name to /etc/HOSTNAME] **************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | remove host_ip host_name from /etc/hosts] ****************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | echo 127.0.0.2 host_name to /etc/hosts] ******************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | echo host_ip host_name to /etc/hosts] ********************** 
+changed: [I-TCENTER-DB02]
+changed: [I-TCENTER-DB01]
+
+TASK: [InitialVM | execute cmd hostname] ************************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | create working dir] **************************************** 
+ok: [I-TCENTER-DB01]
+ok: [I-TCENTER-DB02]
+
+TASK: [InitialVM | print msg] ************************************************* 
+ok: [I-TCENTER-DB01] => {
+    "msg": "create /tmp/root successfully."
+}
+ok: [I-TCENTER-DB02] => {
+    "msg": "create /tmp/root successfully."
+}
+
+TASK: [InitialVM | backup file] *********************************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | print msg] ************************************************* 
+ok: [I-TCENTER-DB02] => {
+    "msg": "backup /etc/resolv.conf to /tmp/root/resolv.conf_20171109061013 successfully."
+}
+ok: [I-TCENTER-DB01] => {
+    "msg": "backup /etc/resolv.conf to /tmp/root/resolv.conf_20171109061013 successfully."
+}
+
+TASK: [InitialVM | remove dns from /etc/resolv.conf] ************************** 
+changed: [I-TCENTER-DB02]
+changed: [I-TCENTER-DB01]
+
+TASK: [InitialVM | remove dns from /etc/resolv.conf] ************************** 
+changed: [I-TCENTER-DB02]
+changed: [I-TCENTER-DB01]
+
+TASK: [InitialVM | echo dns to /etc/resolv.conf] ****************************** 
+changed: [I-TCENTER-DB02]
+changed: [I-TCENTER-DB01]
+
+TASK: [InitialVM | echo dns to /etc/resolv.conf] ****************************** 
+changed: [I-TCENTER-DB01] => (item=10.55.69.2)
+changed: [I-TCENTER-DB01] => (item=10.55.69.3)
+changed: [I-TCENTER-DB02] => (item=10.55.69.2)
+changed: [I-TCENTER-DB02] => (item=10.55.69.3)
+
+TASK: [InitialVM | Transfer setNscd.sh file to remote node] ******************* 
+changed: [I-TCENTER-DB02]
+changed: [I-TCENTER-DB01]
+
+TASK: [InitialVM | start config nscd] ***************************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | remove setNscd.sh] ***************************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | restart nscd service] ************************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | print msg] ************************************************* 
+ok: [I-TCENTER-DB01] => {
+    "msg": "Config dns succ."
+}
+ok: [I-TCENTER-DB02] => {
+    "msg": "Config dns succ."
+}
+
+TASK: [InitialVM | create working dir] **************************************** 
+ok: [I-TCENTER-DB02]
+ok: [I-TCENTER-DB01]
+
+TASK: [InitialVM | print msg] ************************************************* 
+ok: [I-TCENTER-DB01] => {
+    "msg": "create /tmp/root successfully."
+}
+ok: [I-TCENTER-DB02] => {
+    "msg": "create /tmp/root successfully."
+}
+
+TASK: [InitialVM | backup file] *********************************************** 
+changed: [I-TCENTER-DB02]
+changed: [I-TCENTER-DB01]
+
+TASK: [InitialVM | print msg] ************************************************* 
+ok: [I-TCENTER-DB02] => {
+    "msg": "backup /etc/ntp.conf to /tmp/root/ntp.conf_20171109061016 successfully."
+}
+ok: [I-TCENTER-DB01] => {
+    "msg": "backup /etc/ntp.conf to /tmp/root/ntp.conf_20171109061016 successfully."
+}
+
+TASK: [InitialVM | backup file] *********************************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | print msg] ************************************************* 
+ok: [I-TCENTER-DB01] => {
+    "msg": "backup /etc/crontab to /tmp/root/crontab_20171109061017 successfully."
+}
+ok: [I-TCENTER-DB02] => {
+    "msg": "backup /etc/crontab to /tmp/root/crontab_20171109061017 successfully."
+}
+
+TASK: [InitialVM | force synchronized with ntp server] ************************ 
+failed: [I-TCENTER-DB01] => {"changed": true, "cmd": "/usr/sbin/ntpdate 10.55.69.4 >/dev/null 2>&1 && /sbin/hwclock -w", "delta": "0:00:00.015736", "end": "2017-11-09 16:10:14.187963", "rc": 1, "start": "2017-11-09 16:10:14.172227", "warnings": []}
+...ignoring
+failed: [I-TCENTER-DB02] => {"changed": true, "cmd": "/usr/sbin/ntpdate 10.55.69.4 >/dev/null 2>&1 && /sbin/hwclock -w", "delta": "0:00:00.013712", "end": "2017-11-09 16:10:15.163210", "rc": 1, "start": "2017-11-09 16:10:15.149498", "warnings": []}
+...ignoring
+
+TASK: [InitialVM | reserve ntp from /etc/ntp.conf] **************************** 
+changed: [I-TCENTER-DB01] => (item=10.55.69.4)
+changed: [I-TCENTER-DB01] => (item=10.55.69.5)
+changed: [I-TCENTER-DB02] => (item=10.55.69.4)
+changed: [I-TCENTER-DB02] => (item=10.55.69.5)
+
+TASK: [InitialVM | remove all ntp from /etc/ntp.conf] ************************* 
+changed: [I-TCENTER-DB01] => (item=10.55.69.4)
+changed: [I-TCENTER-DB01] => (item=10.55.69.5)
+changed: [I-TCENTER-DB02] => (item=10.55.69.4)
+changed: [I-TCENTER-DB02] => (item=10.55.69.5)
+
+TASK: [InitialVM | echo ntp configuration to /etc/ntp.conf] ******************* 
+changed: [I-TCENTER-DB01] => (item=10.55.69.4)
+changed: [I-TCENTER-DB01] => (item=10.55.69.5)
+changed: [I-TCENTER-DB02] => (item=10.55.69.4)
+changed: [I-TCENTER-DB02] => (item=10.55.69.5)
+
+TASK: [InitialVM | restart ntp] *********************************************** 
+changed: [I-TCENTER-DB02]
+changed: [I-TCENTER-DB01]
+
+TASK: [InitialVM | chkconfig ntp on] ****************************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | clear ntp cron job from /etc/crontab] ********************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | set cron job for ntp to /etc/crontab] ********************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | restart crontab] ******************************************* 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | cat os type] *********************************************** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | remove ntp configuration from /etc/sudoers in EulerOS] ***** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | remove ntp configuration from /etc/sudoers in Suse] ******** 
+
+TASK: [InitialVM | support opsmonitor to pull up the ntp service automatically in EulerOS] *** 
+changed: [I-TCENTER-DB01]
+changed: [I-TCENTER-DB02]
+
+TASK: [InitialVM | support opsmonitor to pull up the ntp service automatically in Suse] *** 
+
+PLAY RECAP ******************************************************************** 
+I-TCENTER-DB01             : ok=50   changed=37   unreachable=0    failed=0   
+I-TCENTER-DB02             : ok=50   changed=37   unreachable=0    failed=0   
+

@@ -1,0 +1,17 @@
+---
+- name: kill processes accessing the device
+  shell: fuser -km /dev/{{target_disk}}{{item.disk_index}}
+  with_items: '{{mount_mapping}}'
+  ignore_errors: true
+  sudo: yes
+
+- name: umount device
+  shell: umount /dev/{{target_disk}}{{item.disk_index}}
+  with_items: '{{mount_mapping}}'
+  ignore_errors: true
+  sudo: yes
+
+- name: delete old info in /etc/fstab
+  shell: sed -i '/^\/dev\/{{target_disk}}{{item.disk_index}}/d' /etc/fstab
+  with_items: '{{mount_mapping}}'
+  sudo: yes

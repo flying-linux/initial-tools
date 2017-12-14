@@ -1,0 +1,12 @@
+{% for item in mount_mapping %}
+n
+p
+
+
+{% if item.disk_size is number %}
++{{ item.disk_size }}G
+{% else %}
+
+{% endif %}
+{% endfor %}
+w

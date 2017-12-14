@@ -1,0 +1,3 @@
+--- 
+- include: init_disk.yml
+  when: disk_name is defined

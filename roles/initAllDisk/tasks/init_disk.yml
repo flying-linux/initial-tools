@@ -1,0 +1,16 @@
+--- 
+- name: Transfer service_switch script
+  template: src=service_switch.sh dest=/tmp mode=0500 
+- name: Transfer partition script
+  template: src=partitions_and_mount.sh dest=/tmp mode=0500 
+- name: execute script
+  sudo: yes
+  shell: /tmp/service_switch.sh {{disk_name}} "{{mount_map}}"
+  async: 3600
+  poll: 20
+  register: result
+- name: print result
+  debug: msg='result:{{ result.stdout }}'
+- name: clean env
+  sudo: yes
+  shell: rm -rf /tmp/partitions_and_mount.sh && rm -rf /tmp/service_switch.sh && rm -rf /tmp/pm_log

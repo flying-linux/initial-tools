@@ -1,0 +1,217 @@
+Deploy job is running, logs as follows:
+
+2017-11-09 06:09:23,086 p=13143 u=dmk |   
+2017-11-09 06:09:23,087 p=13143 u=dmk |  /usr/bin/ansible-playbook site.yml -i hosts -t InitialVM -k -K
+2017-11-09 06:09:23,087 p=13143 u=dmk |   
+2017-11-09 06:09:23,215 p=13143 u=dmk |  PLAY [base] ******************************************************************* 
+2017-11-09 06:09:23,216 p=13143 u=dmk |  TASK: [InitialVM | remove user] *********************************************** 
+2017-11-09 06:09:23,253 p=13143 u=dmk |  TASK: [InitialVM | add usergroup] ********************************************* 
+2017-11-09 06:09:27,647 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:09:27,652 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:09:27,659 p=13143 u=dmk |  TASK: [InitialVM | add user] ************************************************** 
+2017-11-09 06:09:27,892 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:09:27,909 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:09:27,916 p=13143 u=dmk |  TASK: [InitialVM | print msg] ************************************************* 
+2017-11-09 06:09:27,942 p=13143 u=dmk |  ok: [I-TCENTER-DB01] => {
+    "msg": "add usergroup apitask and user apitask successfully"
+}
+2017-11-09 06:09:27,943 p=13143 u=dmk |  ok: [I-TCENTER-DB02] => {
+    "msg": "add usergroup apitask and user apitask successfully"
+}
+2017-11-09 06:09:27,951 p=13143 u=dmk |  TASK: [InitialVM | passwd user {{user_name}}] ********************************* 
+2017-11-09 06:09:28,122 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:09:28,135 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:09:28,145 p=13143 u=dmk |  TASK: [InitialVM | generate ssh_key for user] ********************************* 
+2017-11-09 06:09:28,181 p=13143 u=dmk |  TASK: [InitialVM | print msg] ************************************************* 
+2017-11-09 06:09:28,212 p=13143 u=dmk |  TASK: [InitialVM | Transfer service_switch script] **************************** 
+2017-11-09 06:09:28,486 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:09:28,505 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:09:28,512 p=13143 u=dmk |  TASK: [InitialVM | Transfer partition script] ********************************* 
+2017-11-09 06:09:28,784 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:09:29,790 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:09:29,797 p=13143 u=dmk |  TASK: [InitialVM | execute script] ******************************************** 
+2017-11-09 06:09:51,238 p=13143 u=dmk |  ok: [I-TCENTER-DB02]
+2017-11-09 06:09:51,238 p=13143 u=dmk |  ok: [I-TCENTER-DB01]
+2017-11-09 06:09:51,246 p=13143 u=dmk |  <job 216790623708.45870> polling, 3580s remaining
+2017-11-09 06:09:51,246 p=13143 u=dmk |  <job 216790623708.44084> polling, 3580s remaining
+2017-11-09 06:10:11,386 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:11,390 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:11,399 p=13143 u=dmk |  <job 216790623708.45870> finished on I-TCENTER-DB02
+2017-11-09 06:10:11,399 p=13143 u=dmk |  <job 216790623708.44084> finished on I-TCENTER-DB01
+2017-11-09 06:10:11,400 p=13143 u=dmk |  TASK: [InitialVM | print result] ********************************************** 
+2017-11-09 06:10:11,432 p=13143 u=dmk |  ok: [I-TCENTER-DB01] => {
+    "msg": "result:/tmp/partitions_and_mount.sh /dev/xvde yes 3 130G 120G DEFAULT  no /opt/backup /var/log /opt\n--------Backup the file----------------------------\n----------delete old partitions--------------------\n--------Begin to create partitions for disk--------\n\n\n---------------if need create swap----------------\n------Begin to mount disk to document folder------\n-------------------Show  Result-------------------\nFilesystem                    Size  Used Avail Use% Mounted on\n/dev/mapper/VolGroup-lv_root   38G  1.1G   37G   3% /\ndevtmpfs                      3.9G     0  3.9G   0% /dev\ntmpfs                         3.9G     0  3.9G   0% /dev/shm\ntmpfs                         3.9G  8.4M  3.9G   1% /run\ntmpfs                         3.9G     0  3.9G   0% /sys/fs/cgroup\n/dev/xvda1                    488M   44M  409M  10% /boot\ntmpfs                         795M     0  795M   0% /run/user/0\n/dev/xvde2                    119G  191M  112G   1% /var/log\n/dev/xvde3                    148G  188M  140G   1% /opt\n-----------------------End------------------------"
+}
+2017-11-09 06:10:11,433 p=13143 u=dmk |  ok: [I-TCENTER-DB02] => {
+    "msg": "result:/tmp/partitions_and_mount.sh /dev/xvde yes 3 130G 120G DEFAULT  no /opt/backup /var/log /opt\n--------Backup the file----------------------------\n----------delete old partitions--------------------\n--------Begin to create partitions for disk--------\n\n\n---------------if need create swap----------------\n------Begin to mount disk to document folder------\n-------------------Show  Result-------------------\nFilesystem                    Size  Used Avail Use% Mounted on\n/dev/mapper/VolGroup-lv_root   38G  1.1G   37G   3% /\ndevtmpfs                      3.9G     0  3.9G   0% /dev\ntmpfs                         3.9G     0  3.9G   0% /dev/shm\ntmpfs                         3.9G  8.4M  3.9G   1% /run\ntmpfs                         3.9G     0  3.9G   0% /sys/fs/cgroup\n/dev/xvda1                    488M   44M  409M  10% /boot\ntmpfs                         795M     0  795M   0% /run/user/0\n/dev/xvde2                    119G  191M  112G   1% /var/log\n/dev/xvde3                    148G  188M  140G   1% /opt\n-----------------------End------------------------"
+}
+2017-11-09 06:10:11,439 p=13143 u=dmk |  TASK: [InitialVM | clean env] ************************************************* 
+2017-11-09 06:10:11,569 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:11,576 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:11,582 p=13143 u=dmk |  TASK: [InitialVM | create working dir] **************************************** 
+2017-11-09 06:10:11,707 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:11,710 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:11,716 p=13143 u=dmk |  TASK: [InitialVM | print msg] ************************************************* 
+2017-11-09 06:10:11,743 p=13143 u=dmk |  ok: [I-TCENTER-DB02] => {
+    "msg": "create /tmp/root successfully."
+}
+2017-11-09 06:10:11,745 p=13143 u=dmk |  ok: [I-TCENTER-DB01] => {
+    "msg": "create /tmp/root successfully."
+}
+2017-11-09 06:10:11,751 p=13143 u=dmk |  TASK: [InitialVM | backup file] *********************************************** 
+2017-11-09 06:10:11,893 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:11,898 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:11,905 p=13143 u=dmk |  TASK: [InitialVM | print msg] ************************************************* 
+2017-11-09 06:10:11,938 p=13143 u=dmk |  ok: [I-TCENTER-DB01] => {
+    "msg": "backup /etc/hosts to /tmp/root/hosts_20171109061011 successfully."
+}
+2017-11-09 06:10:11,939 p=13143 u=dmk |  ok: [I-TCENTER-DB02] => {
+    "msg": "backup /etc/hosts to /tmp/root/hosts_20171109061011 successfully."
+}
+2017-11-09 06:10:11,946 p=13143 u=dmk |  TASK: [InitialVM | add host_name to /etc/HOSTNAME] **************************** 
+2017-11-09 06:10:12,079 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:12,085 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:12,092 p=13143 u=dmk |  TASK: [InitialVM | remove host_ip host_name from /etc/hosts] ****************** 
+2017-11-09 06:10:12,224 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:12,237 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:12,248 p=13143 u=dmk |  TASK: [InitialVM | echo 127.0.0.2 host_name to /etc/hosts] ******************** 
+2017-11-09 06:10:12,381 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:12,390 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:12,396 p=13143 u=dmk |  TASK: [InitialVM | echo host_ip host_name to /etc/hosts] ********************** 
+2017-11-09 06:10:12,529 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:12,532 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:12,539 p=13143 u=dmk |  TASK: [InitialVM | execute cmd hostname] ************************************** 
+2017-11-09 06:10:12,665 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:12,681 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:12,688 p=13143 u=dmk |  TASK: [InitialVM | create working dir] **************************************** 
+2017-11-09 06:10:12,818 p=13143 u=dmk |  ok: [I-TCENTER-DB01]
+2017-11-09 06:10:12,827 p=13143 u=dmk |  ok: [I-TCENTER-DB02]
+2017-11-09 06:10:12,834 p=13143 u=dmk |  TASK: [InitialVM | print msg] ************************************************* 
+2017-11-09 06:10:12,859 p=13143 u=dmk |  ok: [I-TCENTER-DB01] => {
+    "msg": "create /tmp/root successfully."
+}
+2017-11-09 06:10:12,860 p=13143 u=dmk |  ok: [I-TCENTER-DB02] => {
+    "msg": "create /tmp/root successfully."
+}
+2017-11-09 06:10:12,867 p=13143 u=dmk |  TASK: [InitialVM | backup file] *********************************************** 
+2017-11-09 06:10:13,003 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:13,012 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:13,019 p=13143 u=dmk |  TASK: [InitialVM | print msg] ************************************************* 
+2017-11-09 06:10:13,057 p=13143 u=dmk |  ok: [I-TCENTER-DB02] => {
+    "msg": "backup /etc/resolv.conf to /tmp/root/resolv.conf_20171109061013 successfully."
+}
+2017-11-09 06:10:13,057 p=13143 u=dmk |  ok: [I-TCENTER-DB01] => {
+    "msg": "backup /etc/resolv.conf to /tmp/root/resolv.conf_20171109061013 successfully."
+}
+2017-11-09 06:10:13,065 p=13143 u=dmk |  TASK: [InitialVM | remove dns from /etc/resolv.conf] ************************** 
+2017-11-09 06:10:13,208 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:14,196 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:14,203 p=13143 u=dmk |  TASK: [InitialVM | remove dns from /etc/resolv.conf] ************************** 
+2017-11-09 06:10:14,331 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:14,331 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:14,339 p=13143 u=dmk |  TASK: [InitialVM | echo dns to /etc/resolv.conf] ****************************** 
+2017-11-09 06:10:14,468 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:14,470 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:14,478 p=13143 u=dmk |  TASK: [InitialVM | echo dns to /etc/resolv.conf] ****************************** 
+2017-11-09 06:10:14,612 p=13143 u=dmk |  changed: [I-TCENTER-DB01] => (item=10.55.69.2)
+2017-11-09 06:10:14,618 p=13143 u=dmk |  changed: [I-TCENTER-DB02] => (item=10.55.69.2)
+2017-11-09 06:10:14,716 p=13143 u=dmk |  changed: [I-TCENTER-DB01] => (item=10.55.69.3)
+2017-11-09 06:10:14,725 p=13143 u=dmk |  changed: [I-TCENTER-DB02] => (item=10.55.69.3)
+2017-11-09 06:10:14,732 p=13143 u=dmk |  TASK: [InitialVM | Transfer setNscd.sh file to remote node] ******************* 
+2017-11-09 06:10:15,000 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:15,004 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:15,011 p=13143 u=dmk |  TASK: [InitialVM | start config nscd] ***************************************** 
+2017-11-09 06:10:15,167 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:15,170 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:15,177 p=13143 u=dmk |  TASK: [InitialVM | remove setNscd.sh] ***************************************** 
+2017-11-09 06:10:15,314 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:16,309 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:16,316 p=13143 u=dmk |  TASK: [InitialVM | restart nscd service] ************************************** 
+2017-11-09 06:10:16,498 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:16,500 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:16,507 p=13143 u=dmk |  TASK: [InitialVM | print msg] ************************************************* 
+2017-11-09 06:10:16,532 p=13143 u=dmk |  ok: [I-TCENTER-DB01] => {
+    "msg": "Config dns succ."
+}
+2017-11-09 06:10:16,533 p=13143 u=dmk |  ok: [I-TCENTER-DB02] => {
+    "msg": "Config dns succ."
+}
+2017-11-09 06:10:16,539 p=13143 u=dmk |  TASK: [InitialVM | create working dir] **************************************** 
+2017-11-09 06:10:16,667 p=13143 u=dmk |  ok: [I-TCENTER-DB02]
+2017-11-09 06:10:16,667 p=13143 u=dmk |  ok: [I-TCENTER-DB01]
+2017-11-09 06:10:16,675 p=13143 u=dmk |  TASK: [InitialVM | print msg] ************************************************* 
+2017-11-09 06:10:16,700 p=13143 u=dmk |  ok: [I-TCENTER-DB01] => {
+    "msg": "create /tmp/root successfully."
+}
+2017-11-09 06:10:16,702 p=13143 u=dmk |  ok: [I-TCENTER-DB02] => {
+    "msg": "create /tmp/root successfully."
+}
+2017-11-09 06:10:16,708 p=13143 u=dmk |  TASK: [InitialVM | backup file] *********************************************** 
+2017-11-09 06:10:16,844 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:16,846 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:16,853 p=13143 u=dmk |  TASK: [InitialVM | print msg] ************************************************* 
+2017-11-09 06:10:16,890 p=13143 u=dmk |  ok: [I-TCENTER-DB02] => {
+    "msg": "backup /etc/ntp.conf to /tmp/root/ntp.conf_20171109061016 successfully."
+}
+2017-11-09 06:10:16,891 p=13143 u=dmk |  ok: [I-TCENTER-DB01] => {
+    "msg": "backup /etc/ntp.conf to /tmp/root/ntp.conf_20171109061016 successfully."
+}
+2017-11-09 06:10:16,898 p=13143 u=dmk |  TASK: [InitialVM | backup file] *********************************************** 
+2017-11-09 06:10:17,041 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:17,047 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:17,054 p=13143 u=dmk |  TASK: [InitialVM | print msg] ************************************************* 
+2017-11-09 06:10:17,089 p=13143 u=dmk |  ok: [I-TCENTER-DB01] => {
+    "msg": "backup /etc/crontab to /tmp/root/crontab_20171109061017 successfully."
+}
+2017-11-09 06:10:17,091 p=13143 u=dmk |  ok: [I-TCENTER-DB02] => {
+    "msg": "backup /etc/crontab to /tmp/root/crontab_20171109061017 successfully."
+}
+2017-11-09 06:10:17,097 p=13143 u=dmk |  TASK: [InitialVM | force synchronized with ntp server] ************************ 
+2017-11-09 06:10:17,241 p=13143 u=dmk |  failed: [I-TCENTER-DB01] => {"changed": true, "cmd": "/usr/sbin/ntpdate 10.55.69.4 >/dev/null 2>&1 && /sbin/hwclock -w", "delta": "0:00:00.015736", "end": "2017-11-09 16:10:14.187963", "rc": 1, "start": "2017-11-09 16:10:14.172227", "warnings": []}
+2017-11-09 06:10:17,241 p=13143 u=dmk |  ...ignoring
+2017-11-09 06:10:17,255 p=13143 u=dmk |  failed: [I-TCENTER-DB02] => {"changed": true, "cmd": "/usr/sbin/ntpdate 10.55.69.4 >/dev/null 2>&1 && /sbin/hwclock -w", "delta": "0:00:00.013712", "end": "2017-11-09 16:10:15.163210", "rc": 1, "start": "2017-11-09 16:10:15.149498", "warnings": []}
+2017-11-09 06:10:17,255 p=13143 u=dmk |  ...ignoring
+2017-11-09 06:10:17,262 p=13143 u=dmk |  TASK: [InitialVM | reserve ntp from /etc/ntp.conf] **************************** 
+2017-11-09 06:10:17,401 p=13143 u=dmk |  changed: [I-TCENTER-DB01] => (item=10.55.69.4)
+2017-11-09 06:10:17,413 p=13143 u=dmk |  changed: [I-TCENTER-DB02] => (item=10.55.69.4)
+2017-11-09 06:10:17,506 p=13143 u=dmk |  changed: [I-TCENTER-DB01] => (item=10.55.69.5)
+2017-11-09 06:10:17,522 p=13143 u=dmk |  changed: [I-TCENTER-DB02] => (item=10.55.69.5)
+2017-11-09 06:10:17,529 p=13143 u=dmk |  TASK: [InitialVM | remove all ntp from /etc/ntp.conf] ************************* 
+2017-11-09 06:10:17,665 p=13143 u=dmk |  changed: [I-TCENTER-DB01] => (item=10.55.69.4)
+2017-11-09 06:10:17,666 p=13143 u=dmk |  changed: [I-TCENTER-DB02] => (item=10.55.69.4)
+2017-11-09 06:10:17,775 p=13143 u=dmk |  changed: [I-TCENTER-DB01] => (item=10.55.69.5)
+2017-11-09 06:10:17,779 p=13143 u=dmk |  changed: [I-TCENTER-DB02] => (item=10.55.69.5)
+2017-11-09 06:10:17,785 p=13143 u=dmk |  TASK: [InitialVM | echo ntp configuration to /etc/ntp.conf] ******************* 
+2017-11-09 06:10:17,923 p=13143 u=dmk |  changed: [I-TCENTER-DB02] => (item=10.55.69.4)
+2017-11-09 06:10:17,923 p=13143 u=dmk |  changed: [I-TCENTER-DB01] => (item=10.55.69.4)
+2017-11-09 06:10:18,031 p=13143 u=dmk |  changed: [I-TCENTER-DB01] => (item=10.55.69.5)
+2017-11-09 06:10:18,037 p=13143 u=dmk |  changed: [I-TCENTER-DB02] => (item=10.55.69.5)
+2017-11-09 06:10:18,046 p=13143 u=dmk |  TASK: [InitialVM | restart ntp] *********************************************** 
+2017-11-09 06:10:18,254 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:18,255 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:18,262 p=13143 u=dmk |  TASK: [InitialVM | chkconfig ntp on] ****************************************** 
+2017-11-09 06:10:18,458 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:18,471 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:18,479 p=13143 u=dmk |  TASK: [InitialVM | clear ntp cron job from /etc/crontab] ********************** 
+2017-11-09 06:10:18,611 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:18,613 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:18,621 p=13143 u=dmk |  TASK: [InitialVM | set cron job for ntp to /etc/crontab] ********************** 
+2017-11-09 06:10:18,751 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:18,751 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:18,760 p=13143 u=dmk |  TASK: [InitialVM | restart crontab] ******************************************* 
+2017-11-09 06:10:18,909 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:18,916 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:18,922 p=13143 u=dmk |  TASK: [InitialVM | cat os type] *********************************************** 
+2017-11-09 06:10:19,050 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:20,055 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:20,062 p=13143 u=dmk |  TASK: [InitialVM | remove ntp configuration from /etc/sudoers in EulerOS] ***** 
+2017-11-09 06:10:20,206 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:20,210 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:20,226 p=13143 u=dmk |  TASK: [InitialVM | remove ntp configuration from /etc/sudoers in Suse] ******** 
+2017-11-09 06:10:20,264 p=13143 u=dmk |  TASK: [InitialVM | support opsmonitor to pull up the ntp service automatically in EulerOS] *** 
+2017-11-09 06:10:20,417 p=13143 u=dmk |  changed: [I-TCENTER-DB01]
+2017-11-09 06:10:20,422 p=13143 u=dmk |  changed: [I-TCENTER-DB02]
+2017-11-09 06:10:20,439 p=13143 u=dmk |  TASK: [InitialVM | support opsmonitor to pull up the ntp service automatically in Suse] *** 
+2017-11-09 06:10:20,478 p=13143 u=dmk |  PLAY RECAP ******************************************************************** 
+2017-11-09 06:10:20,478 p=13143 u=dmk |  I-TCENTER-DB01             : ok=50   changed=37   unreachable=0    failed=0   
+2017-11-09 06:10:20,478 p=13143 u=dmk |  I-TCENTER-DB02             : ok=50   changed=37   unreachable=0    failed=0   

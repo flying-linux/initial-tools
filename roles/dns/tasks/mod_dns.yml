@@ -1,0 +1,32 @@
+---
+- name: remove dns from /etc/resolv.conf
+  shell: sed -i '/^nameserver/d' /etc/resolv.conf
+  sudo: yes
+
+- name: remove dns from /etc/resolv.conf
+  shell: sed -i '/^options/d' /etc/resolv.conf
+  sudo: yes
+
+- name: echo dns to /etc/resolv.conf
+  shell: echo 'options timeout:1' >> /etc/resolv.conf
+  sudo: yes
+
+- name: echo dns to /etc/resolv.conf
+  shell: echo 'nameserver {{item}}' >> /etc/resolv.conf
+  with_items: '{{dns}}'
+  sudo: yes
+
+- name: Transfer setNscd.sh file to remote node
+  template: src=setNscd.sh dest=/tmp mode=0500 owner={{ansible_ssh_user}} group={{ansible_ssh_group}}
+
+- name: start config nscd
+  sudo: yes
+  shell: /tmp/setNscd.sh
+
+- name: remove setNscd.sh
+  sudo: yes
+  shell: rm -rf /tmp/setNscd.sh
+
+- name: restart nscd service
+  sudo: yes
+  command: service nscd restart

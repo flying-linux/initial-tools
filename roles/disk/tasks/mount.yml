@@ -1,0 +1,9 @@
+--- 
+- name: add mount info into /etc/fstab
+  mount: name={{item.mount_point}} src=/dev/{{target_disk}}{{item.disk_index}} state=mounted fstype={{fs_type}} opts="nodev,nosuid" dump=1 passno=2
+  with_items: '{{mount_mapping}}'
+  sudo: yes
+
+- name: mount device
+  shell: mount -a
+  sudo: yes

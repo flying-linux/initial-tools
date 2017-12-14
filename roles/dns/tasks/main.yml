@@ -1,0 +1,10 @@
+---
+- include: ../../common/tasks/create_dir.yml target={{tmp_dir}}
+
+- include: ../../common/tasks/backup_file.yml source=/etc/resolv.conf target={{tmp_dir}}/resolv.conf_{{timestamp}}
+
+- include: mod_dns.yml
+
+- name: print msg
+  debug: msg="Config dns succ."
+

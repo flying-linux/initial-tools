@@ -1,0 +1,8 @@
+--- 
+- name: Transfer fdisk cmd file
+  template: src=fdisk_cmd dest={{tmp_dir}}/ mode=0600 
+  sudo: yes
+
+- name: fdisk partion
+  shell: fdisk /dev/{{target_disk}} < {{tmp_dir}}/fdisk_cmd
+  sudo: yes

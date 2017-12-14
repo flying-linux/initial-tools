@@ -1,0 +1,20 @@
+---
+- name: add host_name to /etc/HOSTNAME
+  shell: echo {{host_name}} > /etc/HOSTNAME
+  sudo: yes
+  
+- name: remove host_ip host_name from /etc/hosts
+  shell: sed -i '/{{host_ip}}\|{{host_name}}\|127.0.0.2/d' /etc/hosts
+  sudo: yes
+
+- name: echo 127.0.0.2 host_name to /etc/hosts
+  shell: echo 127.0.0.2 {{host_name}} {{host_name}} >> /etc/hosts
+  sudo: yes
+  
+- name: echo host_ip host_name to /etc/hosts
+  shell: echo {{host_ip}} {{host_name}} {{host_name}} >> /etc/hosts
+  sudo: yes
+
+- name: execute cmd hostname
+  shell: hostname {{host_name}}
+  sudo: yes

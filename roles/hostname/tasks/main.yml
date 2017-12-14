@@ -1,0 +1,10 @@
+---
+- include: ../../common/tasks/create_dir.yml target={{tmp_dir}}
+
+- include: ../../common/tasks/backup_file.yml source=/etc/hosts target={{tmp_dir}}/hosts_{{timestamp}}
+
+- include: mod_hostname.yml
+  vars:
+    host_ip: '{% if api_ip is defined %} {{api_ip}} {% else %} {{ansible_ssh_host}} {% endif %}'
+    host_name: '{{inventory_hostname}}'
+

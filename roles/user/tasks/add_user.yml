@@ -1,0 +1,11 @@
+---
+- name: add usergroup
+  group: name={{user_group}} state=present
+  sudo: yes
+
+- name: add user
+  user: name={{user_name}} group={{user_group}} shell=/bin/bash
+  sudo: yes
+
+- name: print msg
+  debug: msg="add usergroup {{user_group}} and user {{user_name}} successfully"

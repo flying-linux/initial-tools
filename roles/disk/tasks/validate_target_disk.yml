@@ -1,0 +1,36 @@
+---
+- name: filter target_disk from fdisk list
+  shell: 'fdisk -l | grep {{target_disk}}'
+  register: is_target_disk_exist
+  ignore_errors: true
+
+- name: output filter result
+  debug:
+    var: is_target_disk_exist.stdout
+
+- name: check target_disk existence
+  fail:
+    msg: "Error: target_disk '{{target_disk}}' doesn't exist!"
+  when: is_target_disk_exist.stdout == ''
+
+- name: gathering target_disk mounting info from df list
+  shell: 'df -h | grep {{target_disk}}'
+  register: disk_status
+  ignore_errors: true
+
+- name: output disk_status
+  debug:
+    var: disk_status.stdout
+
+- name: target_disk format precedure validate
+  debug:
+    msg: "Warning: '{{target_disk}}' is busy in use! Be careful to format it! "
+  when:
+    - disk_status.stdout != ''
+
+- name: target_disk format precedure validate
+  fail:
+    msg: "Error: '{{target_disk}}' is under protection! You can set 'switch_format_protect' to 'false' to disable protection!"
+  when:
+    - switch_format_protect
+    - disk_status.stdout != ''

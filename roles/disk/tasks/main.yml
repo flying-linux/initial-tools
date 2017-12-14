@@ -1,0 +1,21 @@
+--- 
+- include: ../../common/tasks/create_dir.yml target={{tmp_dir}}
+
+- include: ../../common/tasks/backup_file.yml source=/etc/fstab target={{tmp_dir}}/fstab_{{timestamp}}
+
+- include: validate_target_disk.yml
+
+- include: umount.yml
+  when: '{{ del_partition | default(true) }}'
+
+- include: del_partition.yml
+  when: '{{ del_partition | default(true) }}'
+
+- include: partition.yml
+  when: '{{ need_partition | default(true) }}'
+
+- include: makefilesystem.yml
+  when: '{{ need_makefilesystem | default(true) }}'
+
+- include: mount.yml
+  when: '{{ need_mount | default(true) }}'

@@ -1,0 +1,20 @@
+---
+#user
+- include: ../../user/tasks/main.yml
+  when: 'switch_account'
+
+#disk
+- include: ../../initAllDisk/tasks/main.yml
+  when: 'switch_disk'
+
+#hostname
+- include: ../../hostname/tasks/main.yml
+  when: 'switch_hostname'
+
+#dns
+- include: ../../dns/tasks/main.yml
+  when: 'switch_dns'
+
+#ntp
+- include: ../../ntp/tasks/main.yml
+  when: 'switch_ntp'

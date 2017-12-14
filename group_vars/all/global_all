@@ -1,0 +1,303 @@
+#################################
+# 1. Global info panel          #
+#################################
+g_L2_nginx:
+  allow_access_remote_host: '10.55.8.2[3-9]|10.55.8.30|10.55.8.7[4-9]|10.55.8.8[0-5]'
+  
+g_tenant_dns:
+  primary: '100.125.1.22'
+  secondary: '8.8.8.8'
+  
+g_eip: 
+  enable_qos_for_eip: 'false'
+  bandwidth_unlimited: 'false'
+  max_bandwidth_size: '300'
+  bandwidth_granularity: '1'
+g_eip_extra_types: []
+g_marketplace:					
+  service:
+g_service_config:
+  audit_log_retain_days: 90
+g_console:
+  home: 
+    address: 
+     - 'console.vivocloudopen.com.br'
+    
+  oldconsole:
+    url: 'no_oldconsole'
+  silvan:
+    rest_address: 'console-silvan.telefonicaopencloud.com:443'
+    version_registry: 
+      address: '10.55.9.34:8086'
+  memcached:
+    address: 'console-memcached01.telefonicaopencloud.com:11211,console-memcached02.telefonicaopencloud.com:11211,console-memcached03.telefonicaopencloud.com:11211,console-memcached04.telefonicaopencloud.com:11211,console-memcached05.telefonicaopencloud.com:11211'
+  static: 
+    domain: 
+     - 'console.vivocloudopen.com.br'
+    
+    hosts: 
+     - '10.55.9.26'
+     - '10.55.9.27'
+     - '10.55.9.28'
+    
+  helpcenter:
+     - 'https://support.vivocloudopen.com.br'
+  theme: 
+     - 'vivo'
+    
+  portal_domain: 'http://www.vivocloudopen.com.br'
+  currency: '$'
+  hotline: '+55 0800 1515 51 Opção: 2 Código: 1629'
+  image_store:
+    address: 'not_initialized:8080'
+
+g_iam:
+  console:
+    address: 
+     - 'auth.vivocloudopen.com.br:443'
+    
+  global_api:
+    address: 'iam-cache-proxy.telefonicaopencloud.com:31943'
+  region_api:
+    address: 'iam-cache-proxy.sa-brazil-1.telefonicaopencloud.com:31943'
+
+g_bss:
+  url: 'https://no_bss:31493'
+  address: 'bss.sa-brazil-1.telefonicaopencloud.com:31943'
+
+g_regions:
+- id: sa-brazil-1
+  code: sa-brazil-1
+  name: SA Brazil 1
+  fsp_cascading:
+    api: '10.55.20.40'
+    nova: 'compute.region.sa-brazil-1.telefonicaopencloud.com:443'
+    cinder: 'volume.region.sa-brazil-1.telefonicaopencloud.com:443'
+    glance: 'image.region.sa-brazil-1.telefonicaopencloud.com:443'
+    metering: 'metering.region.sa-brazil-1.telefonicaopencloud.com:443'
+    neutron: 'network.region.sa-brazil-1.telefonicaopencloud.com:443'
+    nova_ext: 'compute-ext.region.sa-brazil-1.telefonicaopencloud.com:443'
+  AZs:
+  - id: sa-brazil-1a
+    code: sa-brazil-1a
+    name: AZ1
+    vnc_port: 8002
+    
+- id: na-mexico-1
+  code: na-mexico-1
+  name: NA Mexico 1
+  fsp_cascading:
+    api: '10.52.20.40'
+    nova: 'compute.region.na-mexico-1.telefonicaopencloud.com:443'
+    cinder: 'volume.region.na-mexico-1.telefonicaopencloud.com:443'
+    glance: 'image.region.na-mexico-1.telefonicaopencloud.com:443'
+    metering: 'metering.region.na-mexico-1.telefonicaopencloud.com:443'
+    neutron: 'network.region.na-mexico-1.telefonicaopencloud.com:443'
+    nova_ext: 'compute-ext.region.na-mexico-1.telefonicaopencloud.com:443'
+  AZs:
+  - id: na-mexico-1a
+    code: na-mexico-1a
+    name: AZ1
+    vnc_port: 8003
+    
+- id: sa-chile-1
+  code: sa-chile-1
+  name: SA Chile 1
+  fsp_cascading:
+    api: '10.56.20.40'
+    nova: 'compute.region.sa-chile-1.telefonicaopencloud.com:443'
+    cinder: 'volume.region.sa-chile-1.telefonicaopencloud.com:443'
+    glance: 'image.region.sa-chile-1.telefonicaopencloud.com:443'
+    metering: 'metering.region.sa-chile-1.telefonicaopencloud.com:443'
+    neutron: 'network.region.sa-chile-1.telefonicaopencloud.com:443'
+    nova_ext: 'compute-ext.region.sa-chile-1.telefonicaopencloud.com:443'
+  AZs:
+  - id: sa-chile-1a
+    code: sa-chile-1a
+    name: AZ1
+    vnc_port: 8004
+- id: sa-peru-1
+  code: sa-peru-1
+  name: SA Peru 1
+  fsp_cascading:
+    api: '10.51.40.40'
+    nova: 'compute.region.sa-peru-1.telefonicaopencloud.com:443'
+    cinder: 'volume.region.sa-peru-1.telefonicaopencloud.com:443'
+    glance: 'image.region.sa-peru-1.telefonicaopencloud.com:443'
+    metering: 'metering.region.sa-peru-1.telefonicaopencloud.com:443'
+    neutron: 'network.region.sa-peru-1.telefonicaopencloud.com:443'
+    nova_ext: 'compute-ext.region.sa-peru-1.telefonicaopencloud.com:443'
+  AZs:
+  - id: sa-peru-1a
+    code: sa-peru-1a
+    name: AZ1
+    vnc_port: 8006
+- id: sa-argentina-1
+  code: sa-argentina-1
+  name: SA Argentina 1
+  fsp_cascading:
+    api: '10.54.40.40'
+    nova: 'compute.region.sa-argentina-1.telefonicaopencloud.com:443'
+    cinder: 'volume.region.sa-argentina-1.telefonicaopencloud.com:443'
+    glance: 'image.region.sa-argentina-1.telefonicaopencloud.com:443'
+    metering: 'metering.region.sa-argentina-1.telefonicaopencloud.com:443'
+    neutron: 'network.region.sa-argentina-1.telefonicaopencloud.com:443'
+    nova_ext: 'compute-ext.region.sa-argentina-1.telefonicaopencloud.com:443'
+  AZs:
+  - id: sa-argentina-1a
+    code: sa-argentina-1a
+    name: AZ1
+    vnc_port: 8005
+- id: eu-spain-1
+  code: eu-spain-1
+  name: eu-spain-1
+  fsp_cascading:
+    api: '10.134.40.40' 
+    nova: 'compute.region.eu-spain-1.telefonicaopencloud.com:443'
+    cinder: 'volume.region.eu-spain-1.telefonicaopencloud.com:443'
+    glance: 'image.region.eu-spain-1.telefonicaopencloud.com:443'
+    metering: 'metering.region.eu-spain-1.telefonicaopencloud.com:443'
+    neutron: 'network.region.eu-spain-1.telefonicaopencloud.com:443'
+    nova_ext: 'compute-ext.region.eu-spain-1.telefonicaopencloud.com:443'
+  AZs:
+  - id: eu-spain-1a
+    code: eu-spain-1a
+    name: AZ1
+    vnc_port: 8007 
+- id: na-usa-1
+  code: na-usa-1
+  name: NA USA 1
+  fsp_cascading:
+    api: '10.1.40.40'
+    nova: 'compute.region.na-usa-1.telefonicaopencloud.com:443'
+    cinder: 'volume.region.na-usa-1.telefonicaopencloud.com:443'
+    glance: 'image.region.na-usa-1.telefonicaopencloud.com:443'
+    metering: 'metering.region.na-usa-1.telefonicaopencloud.com:443'
+    neutron: 'network.region.na-usa-1.telefonicaopencloud.com:443'
+    nova_ext: 'compute-ext.region.na-usa-1.telefonicaopencloud.com:443'
+  AZs:
+  - id: na-usa-1a
+    code: na-usa-1a
+    name: AZ1
+    vnc_port: 8011
+    
+
+
+
+######################################
+# 2.          Current region info panel    #
+######################################
+g_current_region:
+  location:  'TLF'
+      
+  id: '{{g_regions[0].id}}'
+  code: '{{g_regions[0].code}}'
+  name: '{{g_regions[0].name}}'
+  fsp:
+    cascading: '{{g_regions[0].fsp_cascading}}'
+    AZs: '{{g_regions[0].AZs}}'
+  
+  ecs:
+    service: 'ecs-api.sa-brazil-1.telefonicaopencloud.com:7443'
+  evs:
+    service: 'evs-api.sa-brazil-1.telefonicaopencloud.com:7443'
+  vbs:
+    service: 'vbs-api.sa-brazil-1.telefonicaopencloud.com:7443'
+  bms:
+    service: 'bms-api.sa-brazil-1.telefonicaopencloud.com:7443'
+  ims:
+    service: 'ims-api.sa-brazil-1.telefonicaopencloud.com:7443'  
+  ces:
+    api_console: 'ces-api-control.sa-brazil-1.telefonicaopencloud.com:5000'
+    api_apigateway: 'ces-api-open.sa-brazil-1.telefonicaopencloud.com:5000'
+    api_internal: 'ces-api-ingest.sa-brazil-1.telefonicaopencloud.com:5000'
+    api_rds: 'ces-api-ingest.sa-brazil-1.telefonicaopencloud.com:5000'
+  vpc:
+    service: 'vpc-api.sa-brazil-1.telefonicaopencloud.com:8443'
+    api: 'vpc-api.sa-brazil-1.telefonicaopencloud.com:8443'
+  as:
+    service: 'as-api.sa-brazil-1.telefonicaopencloud.com:8443'
+    api: '10.55.21.111:8443'
+    schedule: 'as-schedule.sa-brazil-1.telefonicaopencloud.com:9443'
+  apicom:
+    service:  'apicom-api.sa-brazil-1.telefonicaopencloud.com:7443'
+  task_center:
+    service:  'taskcenter-api.sa-brazil-1.telefonicaopencloud.com:9527'
+  elb:
+    service: 'elb-service.sa-brazil-1.telefonicaopencloud.com:8443'    
+  sdr:
+    controller: '10.55.21.112:9443'
+    agent: '10.55.21.113:9443'
+  smn:
+    service: 'smn-api.sa-brazil-1.telefonicaopencloud.com:443'
+  rds:
+    service: 'rds-api.sa-brazil-1.telefonicaopencloud.com:6443'
+  alb:
+    service: 'rds-api.sa-brazil-1.telefonicaopencloud.com:6443'
+  rts:
+    groupwatch:
+        service: 'groupwatch.region.sa-brazil-1.telefonicaopencloud.com:443'
+    heat:
+      service: 'orchestration.region.sa-brazil-1.telefonicaopencloud.com:443'
+      host: 'rts.sa-brazil-1.telefonicaopencloud.com'
+  apigateway:
+    silvan_float_ip: '10.55.21.128'
+    asgard_ip: '10.55.21.124'
+  dns:
+    service: ''
+  dms:
+    service: '10.55.17.36:60000'
+  dcs:
+   service:  '10.55.16.46:7443'
+  workspace:
+    service: ''
+  cts:
+    api_console: 'cts-api-console.sa-brazil-1.telefonicaopencloud.com:60000'
+    api_open: 'cts-api-open.sa-brazil-1.telefonicaopencloud.com:60000'
+    api_om: 'cts-api-console.sa-brazil-1.telefonicaopencloud.com:60000'
+  uds:
+    domain: 'obs.sa-brazil-1.telefonicaopencloud.com'
+    api:
+      ip: 'obs.sa-brazil-1.telefonicaopencloud.com'
+      port:
+        https: '443'
+        http: '5080'
+    bucket: 'sa-brazil-1-backup-i'
+  cce:
+    service: '10.55.16.207:8082'
+  ops:
+    service: '10.55.16.207:8083'
+
+######################################
+# 3. O&M                             #
+######################################
+g_dns:
+  ip:
+    - '10.55.69.2'
+    - '10.55.69.3'
+
+g_ntp:
+  ip:
+    - '10.55.69.4'
+    - '10.55.69.5'
+
+    
+g_ftp:
+  ip: 'not_initialized'
+  port: 21
+  user: 'not_initialized'
+
+g_oc:
+  region_api_ip: 'oc.telefonicaopencloud.com'
+  server_port: '63234'
+  
+g_esight:
+  region_api_ip: 'esight.sa-brazil-1.telefonicaopencloud.com'
+  server_port: "32102"
+
+g_ddos: ### not found
+  region_api_ip: "ddos_ip"
+  server_port: "7443"
+
+g_email_address: ''
+g_max_need_bandwidthSize: 300

@@ -1,0 +1,7 @@
+---
+- name: generate ssh_key for user
+  user: name={{user_name}} generate_ssh_key=yes ssh_key_bits=2048 
+  sudo: yes
+
+- name: print msg
+  debug: msg="generate ssh_key for user {{user_name}} successfully"

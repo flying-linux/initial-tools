@@ -1,0 +1,21 @@
+---
+- hosts: base
+  gather_facts: no
+  any_errors_fatal: true
+  roles:
+    - role: user
+      tags: user
+    - role: disk
+      tags: disk
+    - role: dns
+      tags: dns
+    - role: ntp
+      tags: ntp
+    - role: hostname
+      tags: hostname
+    - role: InitialVM
+      tags: InitialVM
+    - role: removeAccount
+      tags: removeAccount
+    - role: initAllDisk
+      tags: initAllDisk

@@ -1,0 +1,35 @@
+---
+- include: ../../common/tasks/create_dir.yml target={{tmp_dir}}
+- include: ../../common/tasks/backup_file.yml source=/etc/ntp.conf target={{tmp_dir}}/ntp.conf_{{timestamp}}
+- include: ../../common/tasks/backup_file.yml source=/etc/crontab target={{tmp_dir}}/crontab_{{timestamp}}
+
+- include: mod_ntp.yml
+
+- include: restart_ntp.yml
+
+- include: update_cron.yml
+
+- name: cat os type
+  shell: cat /etc/os_version
+  register: os_version
+
+- name: remove ntp configuration from /etc/sudoers in EulerOS
+  shell: sed -i '/bin\/systemctl/d' /etc/sudoers
+  sudo: yes
+  when: os_version.stdout.find('Euler') != -1
+  register: isEuler
+
+- name: remove ntp configuration from /etc/sudoers in Suse
+  shell: sed -i '/init.d\/ntp/d' /etc/sudoers
+  sudo: yes
+  when: isEuler|skipped
+
+- name: support opsmonitor to pull up the ntp service automatically in EulerOS
+  shell: echo 'zabbix ALL=(root) NOPASSWD:/bin/systemctl' >> /etc/sudoers
+  sudo: yes
+  when: os_version.stdout.find('Euler') != -1
+
+- name: support opsmonitor to pull up the ntp service automatically in Suse
+  shell: echo 'zabbix ALL=(root) NOPASSWD:/etc/init.d/ntp' >> /etc/sudoers
+  sudo: yes
+  when: isEuler|skipped

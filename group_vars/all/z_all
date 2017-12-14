@@ -1,0 +1,39 @@
+---
+version: 1.0.6
+user_passwd: $5$tc$yz31fYPNHmrDaqVq4YWCb/O1wZj1NuM/461fCRDG0fA
+tmp_dir: '/tmp/root'
+
+dns: '{{g_dns.ip}}'
+
+oldntp:
+  - 1.1.1.1
+
+ntp: '{{g_ntp.ip}}'
+
+target_disk: xvde
+fs_type: 'ext3'
+fs_params: ''
+mount_mapping:
+  - {disk_size: 150, disk_index: 1, mount_point: '/opt'}
+  - {disk_size: 130, disk_index: 2, mount_point: '/opt/backup'}
+  - {disk_size: DEFAULT, disk_index: 2, mount_point: '/var/log'}
+
+timestamp: '{{lookup("pipe","date +%Y%m%d%H%M%S")}}'
+
+#a switch of Create Service Account,set true to create service account 
+switch_account: true
+
+#a switch of Disk Format Protection. Set true to protect disk in use from misformat.
+switch_format_protect: true
+
+#a switch of Mount Disk,set true to partition、format and mount disk
+switch_disk: true
+
+#a switch of Set HostName,set true to set HostName to /etc/hosts file
+switch_hostname: true
+
+#a switch of Set DNS,set true to set dns to /etc/resolv.conf file
+switch_dns: true
+
+#a switch of Set ntp,set true to set ntp to /etc/ntp.conf file
+switch_ntp: true

@@ -1,0 +1,5 @@
+--- 
+- name: restart crontab
+  command: service cron restart
+  ignore_errors: true
+  sudo: yes

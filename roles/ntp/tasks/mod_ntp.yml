@@ -1,0 +1,21 @@
+---
+- name: force synchronized with ntp server
+  shell: /usr/sbin/ntpdate {{ntp[0]}} >/dev/null 2>&1 && /sbin/hwclock -w
+  ignore_errors: true
+  sudo: yes
+
+- name: reserve ntp from /etc/ntp.conf
+  shell: sed -i '/127.0.0.1\|::\|-4 default notrap nomodify nopeer noquery\|-6 default notrap nomodify nopeer noquery/!s/restrict/#restrict/g' /etc/ntp.conf
+  with_items: '{{ntp}}'
+  sudo: yes
+
+- name: remove all ntp from /etc/ntp.conf
+  shell: sed -i "/^server\|#restrict/d" /etc/ntp.conf
+  with_items: '{{ntp}}'
+  sudo: yes
+
+- name: echo ntp configuration to /etc/ntp.conf
+  shell: echo 'server {{item}} iburst' >> /etc/ntp.conf && echo 'restrict {{item}}' >> /etc/ntp.conf
+  with_items: '{{ntp}}'
+  sudo: yes
+  

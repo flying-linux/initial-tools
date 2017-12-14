@@ -1,0 +1,10 @@
+---
+- include: remove_user.yml
+  when: '{{ need_remove_user | default(false) }}'
+
+- include: add_user.yml
+  
+- include: passwd_user.yml
+
+- include: generate_ssh_key.yml
+  when: '{{ need_generate_ssh_key | default(false) }}'

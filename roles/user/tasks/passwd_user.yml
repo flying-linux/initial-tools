@@ -1,0 +1,6 @@
+# password created with:
+# python -c 'import crypt; print crypt.crypt("your_password", "$5$salt")'
+---
+- name: passwd user {{user_name}}
+  user: name={{user_name}} password={{user_passwd}}
+  sudo: yes

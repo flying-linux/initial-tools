@@ -1,0 +1,14 @@
+--- 
+- name: create a shell script for making FileSystem
+  template: src=mkfs.sh dest={{tmp_dir}}
+
+# if the partition is very large or the disk IO is very low
+# you may increase the number of async to wait for it finished
+- name: make file system
+  shell: /bin/bash {{tmp_dir}}/mkfs.sh
+  async: 3600
+  poll: 20
+  sudo: yes
+
+- name: print msg
+  debug: msg="make filesystem succ."

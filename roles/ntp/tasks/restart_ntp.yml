@@ -1,0 +1,8 @@
+---
+- name: restart ntp
+  shell: service ntp restart || service ntpd restart
+  sudo: yes
+
+- name: chkconfig ntp on
+  shell: chkconfig ntp on || chkconfig ntpd on
+  sudo: yes

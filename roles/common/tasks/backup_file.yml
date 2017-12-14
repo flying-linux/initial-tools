@@ -1,0 +1,7 @@
+--- 
+- name: backup file
+  shell: cp {{source}} {{target}}
+  sudo: yes
+
+- name: print msg
+  debug: msg="backup {{source}} to {{target}} successfully."

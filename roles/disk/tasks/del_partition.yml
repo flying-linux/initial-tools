@@ -1,0 +1,4 @@
+---
+- name: delete partition
+  shell: dd if=/dev/zero of=/dev/{{target_disk}} bs=1M count=1
+  sudo: yes
